@@ -1,0 +1,36 @@
+resources:
+  jobs:
+    booking_summay:
+      name: booking_summay_pipeline
+
+      tasks:
+        - task_key: prepare
+          existing_cluster_id: ${var.cluster_id}
+          notebook_task:
+            # Relative to THIS file (Module 5's rule), so ../src.
+            notebook_path: ../src/prepare.ipynb
+            base_parameters: &params
+              catalog: ${var.catalog}
+              schema: ${var.schema}
+              # One person, one suffix — the same identity DAB derives for
+              # the dev target's paths, so nobody overwrites anybody.
+              table_suffix: ${workspace.current_user.short_name}
+              # Where the deployed tree landed, so the notebooks can import
+              # rfm/ — the same package the tests import.
+              bundle_root: ${workspace.file_path}
+
+        - task_key: aggregate
+          depends_on:
+            - task_key: prepare
+          existing_cluster_id: ${var.cluster_id}
+          notebook_task:
+            notebook_path: ../src/aggregate.ipynb
+            base_parameters: *params
+
+        - task_key: report
+          depends_on:
+            - task_key: aggregate
+          existing_cluster_id: ${var.cluster_id}
+          notebook_task:
+            notebook_path: ../src/report.ipynb
+            base_parameters: *params
