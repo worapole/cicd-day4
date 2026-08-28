@@ -30,6 +30,19 @@ targets:
     default: true
     variables:
       schema: m7_dev
+    permissions:
+      - user_name: worapole@ais.co.th
+        level: CAN_MANAGE
+      - user_name: chalanta@ais.co.th
+        level: CAN_MANAGE
+      - user_name: chayatha@ais.co.th
+        level: CAN_MANAGE
+      - user_name: sriamarm@ais.co.th
+        level: CAN_MANAGE
+      - user_name: jirapopg@ais.co.th
+        level: CAN_MANAGE
+      - group_name: BII_TRAIN_USER
+        level: CAN_VIEW
 
   prod:
     mode: production
@@ -42,13 +55,15 @@ targets:
     variables:
       schema: m7_prod
     permissions:
-      - user_name: ${workspace.current_user.userName}
+      - user_name: worapole@ais.co.th
         level: CAN_MANAGE
-      # The workspace already grants this on the .bundle folder, and a
-      # bundle's permissions are declarative: anything present on the folder
-      # but absent here is reported by `bundle validate` as drift
-      # ("workspace folder has permissions not configured in bundle").
-      # Declaring it silences the warning and states the truth; deleting the
-      # grant from the folder instead would be the other honest answer.
-      - group_name: users
+      - user_name: chalanta@ais.co.th
+        level: CAN_MANAGE
+      - user_name: chayatha@ais.co.th
+        level: CAN_MANAGE
+      - user_name: sriamarm@ais.co.th
+        level: CAN_MANAGE
+      - user_name: jirapopg@ais.co.th
+        level: CAN_MANAGE
+      - group_name: BII_TRAIN_USER
         level: CAN_VIEW
