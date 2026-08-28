@@ -1,7 +1,7 @@
 from pathlib import Path
 import matplotlib.pyplot as plt
 from pyspark.sql import functions as F
-
+from functions import write_report
 
 def write_report(df, out_dir) -> "list[Path]":
     """
@@ -110,15 +110,3 @@ def write_report(df, out_dir) -> "list[Path]":
     return written
 
 #####################################################
-
-table_name = "ctl_training_dev.m7.booking_summary_chalanta"
-
-df = spark.table(table_name)
-
-written = write_report(
-    df,
-    "/tmp/booking_report"
-)
-
-for path in written:
-    print(path)
