@@ -8,7 +8,7 @@ resources:
           existing_cluster_id: ${var.cluster_id}
           notebook_task:
             # Relative to THIS file (Module 5's rule), so ../src.
-            notebook_path: ../src/prepare.py
+            notebook_path: ../src/prepare.ipynb
             base_parameters: &params
               catalog: ${var.catalog}
               schema: ${var.schema}
@@ -24,7 +24,7 @@ resources:
             - task_key: prepare
           existing_cluster_id: ${var.cluster_id}
           notebook_task:
-            notebook_path: ../src/aggregate.py
+            notebook_path: ../src/aggregate.ipynb
             base_parameters: *params
 
         - task_key: report
@@ -32,5 +32,5 @@ resources:
             - task_key: aggregate
           existing_cluster_id: ${var.cluster_id}
           notebook_task:
-            notebook_path: ../src/report.py
+            notebook_path: ../src/report.ipynb
             base_parameters: *params
