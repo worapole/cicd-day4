@@ -1,7 +1,6 @@
 from pathlib import Path
 import matplotlib.pyplot as plt
 from pyspark.sql import functions as F
-from functions import write_report
 
 def write_report(df, out_dir) -> "list[Path]":
     """
