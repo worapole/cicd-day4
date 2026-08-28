@@ -2,6 +2,14 @@
 
 A simple project for practicing continuous integration and continuous delivery (CI/CD) workflows.
 
+## Member
+
+- Chalanthon Ainthachot
+- Chayathorn Apichattham
+- Jiraporn Pengtong
+- Sriamara Meepring
+- Worapol Khunaekanan
+
 ## Getting Started
 
 1. Clone the repository.
